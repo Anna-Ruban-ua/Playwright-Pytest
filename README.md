@@ -48,19 +48,25 @@ Add your Slack Webhook URL as a GitHub Secret:
 ### Run tests in Chromium:
 
 ```sh
-pytest --browser=chromium --alluredir=allure-results
+pytest --browser_name=chromium --alluredir=allure-results
 ```
 
 ### Run tests in Firefox:
 
 ```sh
-pytest --browser=firefox --alluredir=allure-results
+pytest --browser_name=firefox --alluredir=allure-results
+```
+
+### Run tests in Webkit:
+
+```sh
+pytest --browser_name=webkit --alluredir=allure-results
 ```
 
 ### Run in parallel:
 
 ```sh
-pytest -n auto --browser=chromium --alluredir=allure-results
+pytest -n auto --browser_name=chromium --alluredir=allure-results
 ```
 
 ## Generate Report

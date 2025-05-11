@@ -8,6 +8,7 @@ pytest = "*"
 pytest-playwright = "*"
 allure-pytest = "*"
 faker = "*"
+pytest-xdist = "*"
 
 [dev-packages]
 
