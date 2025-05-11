@@ -4,6 +4,7 @@ faker = Faker()
 
 class Data:
     signup_form_text = "New User Signup!"
+    login_form_text = "Login to your account"
     signup_account_info_text = "Enter Account Information"
     signed_up_account_info_text = "Account Created!"
     logged_in_as_text = "Logged in as "

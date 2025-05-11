@@ -5,16 +5,21 @@ from playwright.sync_api import Page
 class SignUpLoginPage:
     def __init__(self, page: Page):
         self.page = page
+        #Login
+        self.__login_form = self.page.locator('.login-form')
+        self.__login_email_input = self.__login_form.locator('input[type="email"]')
+        self.__login_password_input = self.__login_form.locator('input[type="password"]')
+        self.__login_form_btn = self.__login_form.locator('button')
         #Signup
         self.__signup_form = self.page.locator('.signup-form')
-        self.__name_input = self.__signup_form.locator('input[type="text"]')
-        self.__email_input = self.__signup_form.locator('input[type="email"]')
+        self.__signup_name_input = self.__signup_form.locator('input[type="text"]')
+        self.__signup_email_input = self.__signup_form.locator('input[type="email"]')
         self.__signup_form_btn = self.__signup_form.locator('button')
         #Account Information
         self.__signup_account_info_text = self.page.locator('.login-form>.text-center')
         self.__gender_radio_mr = self.page.locator('input[type="radio"][value="Mr"]')
         self.__gender_radio_mrs = self.page.locator('input[type="radio"][value="Mrs"]')
-        self.__password_input = self.page.locator('#password')
+        self.__account_password_input = self.page.locator('#password')
         self.__day_select = self.page.locator('select#days')
         self.__month_select = self.page.locator('select#months')
         self.__year_select = self.page.locator('select#years')
@@ -41,6 +46,10 @@ class SignUpLoginPage:
         return self.__signup_form
 
     @property
+    def login_form_container(self):
+        return self.__login_form
+
+    @property
     def signup_account_info_text(self):
         return self.__signup_account_info_text
 
@@ -49,11 +58,18 @@ class SignUpLoginPage:
         return self.__signed_up_account_info_text
 
     def fill_in_signup_form(self, user_name: str, email: str) -> None:
-        self.__name_input.fill(user_name)
-        self.__email_input.fill(email)
+        self.__signup_name_input.fill(user_name)
+        self.__signup_email_input.fill(email)
+
+    def fill_in_login_form(self, email: str, password: str) -> None:
+        self.__login_email_input.fill(email)
+        self.__login_password_input.fill(password)
 
     def click_signup_form_btn(self) -> None:
         self.__signup_form_btn.click()
+
+    def click_login_form_btn(self) -> None:
+        self.__login_form_btn.click()
 
     def select_random_gender(self) -> None:
         gender = random.choice(["Mr", "Mrs"])
@@ -65,7 +81,7 @@ class SignUpLoginPage:
 
     def fill_in_account_info(self, password) -> None:
         self.select_random_gender()
-        self.__password_input.fill(password)
+        self.__account_password_input.fill(password)
 
     def select_birth_date(self, day: int, month: int, year: int) -> None:
         self.__day_select.select_option(str(day))
