@@ -63,9 +63,7 @@ jobs:
         uses: ravsamhq/notify-slack-action@v1
         with:
           status: ${{ job.status }}
-          message_format: >
-            ${{ job.status == 'success' && '✅ Tests Passed! Report: ' || '❌ Tests Failed! Report: ' }} $SLACK_REPORT_LINK
+          message_format: ${{ secrets.GH_ACTIONS_URL }}
           notify_when: "success,failure"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
-          SLACK_REPORT_LINK: ${{ secrets.GH_ACTIONS_URL }}
