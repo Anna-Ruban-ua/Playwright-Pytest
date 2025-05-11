@@ -1,3 +1,5 @@
 .env
 notes.txt
 reports
+.idea/
+allure-results/
