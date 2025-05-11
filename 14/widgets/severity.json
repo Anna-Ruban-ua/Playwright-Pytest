@@ -1,0 +1,1 @@
+[{"uid":"26e494a570d7daf8","name":"Login User with correct email and password","time":{"start":1746995563367,"stop":1746995567201,"duration":3834},"status":"passed","severity":"critical"},{"uid":"1896ede1a5378e41","name":"Register user","time":{"start":1746995562247,"stop":1746995565028,"duration":2781},"status":"passed","severity":"critical"}]
