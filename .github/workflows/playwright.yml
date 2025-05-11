@@ -64,7 +64,8 @@ jobs:
         with:
           status: ${{ job.status }}
           message_format: >
-            ${{ job.status == 'success' && '✅ Tests Passed! Report:' || '❌ Tests Failed! Report:' }} ${{ secrets.GH_ACTIONS_URL }}
+            ${{ job.status == 'success' && '✅ Tests Passed! Report: ' || '❌ Tests Failed! Report: ' }} $SLACK_REPORT_LINK
           notify_when: "success,failure"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+          SLACK_REPORT_LINK: ${{ secrets.GH_ACTIONS_URL }}
