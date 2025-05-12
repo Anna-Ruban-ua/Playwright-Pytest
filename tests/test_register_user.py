@@ -9,7 +9,6 @@ from data.test_data import Data
 from utils.tools import take_screenshot
 
 @allure.feature("User Registration")
-@allure.severity(allure.severity_level.CRITICAL)
 class TestRegisterUser:
 
     @pytest.fixture
@@ -20,7 +19,8 @@ class TestRegisterUser:
         self.signup = SignUpLoginPage(self.page)
 
     @allure.title("Register user")
-    @pytest.mark.one
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.registration
     def test_register_user(self, test_setup):
         user_name = Data.random_username()
         email = Data.get_random_email()
