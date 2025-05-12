@@ -10,6 +10,7 @@ class Data:
     logged_in_as_text = "Logged in as "
     account_deleted_text = "Account Deleted!"
     incorrect_login_text = "Your email or password is incorrect!"
+    email_exists_text = "Email Address already exist!"
 
     available_countries = [
         "India",

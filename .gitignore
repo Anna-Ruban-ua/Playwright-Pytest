@@ -3,3 +3,5 @@ notes.txt
 reports
 .idea/
 allure-results/
+__pycache__/
+*.pyc

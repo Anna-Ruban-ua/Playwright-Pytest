@@ -16,6 +16,7 @@ class SignUpLoginPage:
         self.__signup_name_input = self.__signup_form.locator('input[type="text"]')
         self.__signup_email_input = self.__signup_form.locator('input[type="email"]')
         self.__signup_form_btn = self.__signup_form.locator('button')
+        self.__signup_form_error_text = self.__signup_form.locator('p')
         #Account Information
         self.__signup_account_info_text = self.page.locator('.login-form>.text-center')
         self.__gender_radio_mr = self.page.locator('input[type="radio"][value="Mr"]')
@@ -53,6 +54,10 @@ class SignUpLoginPage:
     @property
     def login_form_error_text(self):
         return self.__login_form_error_text
+
+    @property
+    def signup_form_error_text(self):
+        return self.__signup_form_error_text
 
     @property
     def signup_account_info_text(self):

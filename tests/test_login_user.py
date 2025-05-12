@@ -20,7 +20,8 @@ class TestLoginUser:
 
     @allure.title("Login User with correct email and password")
     @allure.severity(allure.severity_level.CRITICAL)
-    @pytest.mark.login_valid
+    @pytest.mark.auth
+    @pytest.mark.login
     def test_login_user(self, test_setup, register_user):
         email, password, user_name = register_user
 
@@ -52,7 +53,9 @@ class TestLoginUser:
 
     @allure.title("Login User with incorrect email and password")
     @allure.severity(allure.severity_level.NORMAL)
-    @pytest.mark.login_invalid
+    @pytest.mark.auth
+    @pytest.mark.login
+    @pytest.mark.negative
     def test_login_invalid_user(self, test_setup):
         email = Data.get_random_email()
         password = Data.random_password()
@@ -74,3 +77,38 @@ class TestLoginUser:
             expect(self.signup.login_form_error_text).to_have_text(Data.incorrect_login_text)
 
         take_screenshot(self.page, "login_error_text")
+
+    @allure.title("Logout User")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.auth
+    @pytest.mark.logout
+    def test_logout_user(self, test_setup, register_user):
+        email, password, user_name = register_user
+
+        with allure.step("Clear cookies and reload homepage"):
+            self.page.context.clear_cookies()
+            self.page.reload()
+
+        with allure.step("Verify homepage is visible"):
+            expect(self.home.items_container).to_be_visible()
+
+        with allure.step("Click on 'Signup / Login' button"):
+            self.header.click_signup_login_btn()
+
+        with allure.step(f"Verify '{Data.login_form_text}' text is visible"):
+            expect(self.signup.login_form_container).to_contain_text(Data.login_form_text)
+
+        with allure.step(f"Fill login form with correct email: {email}, password: {password}"):
+            self.signup.fill_in_login_form(email, password)
+            self.signup.click_login_form_btn()
+
+        with allure.step(f"Click 'Continue' and verify login as '{user_name}'"):
+            expect(self.home.logged_in_as_text).to_have_text(Data.logged_in_as_text + user_name)
+
+        with allure.step("Click on 'Logout' button"):
+            self.home.click_logout_btn()
+
+        with allure.step("User navigated to login page"):
+            expect(self.signup.login_form_container).to_contain_text(Data.login_form_text)
+
+        take_screenshot(self.page, "user_logged_out")
