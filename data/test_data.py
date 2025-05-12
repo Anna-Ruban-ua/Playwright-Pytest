@@ -9,6 +9,7 @@ class Data:
     signed_up_account_info_text = "Account Created!"
     logged_in_as_text = "Logged in as "
     account_deleted_text = "Account Deleted!"
+    incorrect_login_text = "Your email or password is incorrect!"
 
     available_countries = [
         "India",

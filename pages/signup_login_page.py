@@ -10,6 +10,7 @@ class SignUpLoginPage:
         self.__login_email_input = self.__login_form.locator('input[type="email"]')
         self.__login_password_input = self.__login_form.locator('input[type="password"]')
         self.__login_form_btn = self.__login_form.locator('button')
+        self.__login_form_error_text = self.__login_form.locator('p')
         #Signup
         self.__signup_form = self.page.locator('.signup-form')
         self.__signup_name_input = self.__signup_form.locator('input[type="text"]')
@@ -48,6 +49,10 @@ class SignUpLoginPage:
     @property
     def login_form_container(self):
         return self.__login_form
+
+    @property
+    def login_form_error_text(self):
+        return self.__login_form_error_text
 
     @property
     def signup_account_info_text(self):
