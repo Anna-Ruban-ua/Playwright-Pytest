@@ -13,6 +13,7 @@ class Data:
     email_exists_text = "Email Address already exist!"
     contact_us_verification_text = "Get In Touch"
     contact_us_success_text = "Success! Your details have been submitted successfully."
+    products_container_text = "All Products"
 
     available_countries = [
         "India",
