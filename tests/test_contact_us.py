@@ -48,6 +48,8 @@ class TestContactUs:
         with allure.step("Click 'Submit' button"):
             self.contact.click_submit_button_and_accept_alert()
 
+        take_screenshot(self.page, "filled")
+
         with allure.step(f"Verify '{Data.contact_us_success_text}' text is visible"):
             expect(self.contact.success_text).to_have_text(Data.contact_us_success_text)
 
