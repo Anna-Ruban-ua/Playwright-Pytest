@@ -11,6 +11,8 @@ class Data:
     account_deleted_text = "Account Deleted!"
     incorrect_login_text = "Your email or password is incorrect!"
     email_exists_text = "Email Address already exist!"
+    contact_us_verification_text = "Get In Touch"
+    contact_us_success_text = "Success! Your details have been submitted successfully."
 
     available_countries = [
         "India",
@@ -53,3 +55,11 @@ class Data:
             faker.zipcode(),
             faker.phone_number()
         )
+
+    @staticmethod
+    def random_subject():
+        return faker.sentence()
+
+    @staticmethod
+    def random_message():
+        return faker.text(max_nb_chars=100)
