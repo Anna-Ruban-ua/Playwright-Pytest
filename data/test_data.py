@@ -15,7 +15,8 @@ class Data:
     contact_us_success_text = "Success! Your details have been submitted successfully."
     products_container_text = "All Products"
     search_header_text = "Searched Products"
-
+    subscription_header_text = "Subscription"
+    success_subscribe_text = "You have been successfully subscribed!"
 
     available_countries = [
         "India",
