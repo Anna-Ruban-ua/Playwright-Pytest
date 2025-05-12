@@ -20,7 +20,8 @@ class TestLoginUser:
 
     @allure.title("Login User with correct email and password")
     @allure.severity(allure.severity_level.CRITICAL)
-    @pytest.mark.login_valid
+    @pytest.mark.auth
+    @pytest.mark.login
     def test_login_user(self, test_setup, register_user):
         email, password, user_name = register_user
 
@@ -52,7 +53,9 @@ class TestLoginUser:
 
     @allure.title("Login User with incorrect email and password")
     @allure.severity(allure.severity_level.NORMAL)
-    @pytest.mark.login_invalid
+    @pytest.mark.auth
+    @pytest.mark.login
+    @pytest.mark.negative
     def test_login_invalid_user(self, test_setup):
         email = Data.get_random_email()
         password = Data.random_password()
@@ -77,7 +80,8 @@ class TestLoginUser:
 
     @allure.title("Logout User")
     @allure.severity(allure.severity_level.NORMAL)
-    @pytest.mark.logout_user
+    @pytest.mark.auth
+    @pytest.mark.logout
     def test_logout_user(self, test_setup, register_user):
         email, password, user_name = register_user
 

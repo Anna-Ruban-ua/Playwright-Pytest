@@ -20,7 +20,8 @@ class TestRegisterUser:
 
     @allure.title("Register user")
     @allure.severity(allure.severity_level.CRITICAL)
-    @pytest.mark.registration
+    @pytest.mark.auth
+    @pytest.mark.register
     def test_register_user(self, test_setup):
         user_name = Data.random_username()
         email = Data.get_random_email()
@@ -66,3 +67,33 @@ class TestRegisterUser:
             expect(self.home.account_deleted_text).to_have_text(Data.account_deleted_text)
 
         take_screenshot(self.page, "account_deleted")
+
+    @allure.title("Register User with existing email")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.auth
+    @pytest.mark.register
+    @pytest.mark.negative
+    def test_logout_user(self, test_setup, register_user):
+        email, _, user_name = register_user
+
+        with allure.step("Clear cookies and reload homepage"):
+            self.page.context.clear_cookies()
+            self.page.reload()
+
+        with allure.step("Verify homepage is visible"):
+            expect(self.home.items_container).to_be_visible()
+
+        with allure.step("Click on 'Signup / Login' button"):
+            self.header.click_signup_login_btn()
+
+        with allure.step(f"Verify '{Data.signup_form_text}' text is visible"):
+            expect(self.signup.signup_form_container).to_contain_text(Data.signup_form_text)
+
+        with allure.step(f"Fill signup form with username: {user_name}, email: {email}"):
+            self.signup.fill_in_signup_form(user_name, email)
+            self.signup.click_signup_form_btn()
+
+        with allure.step(f"Verify '{Data.email_exists_text}' text is visible"):
+            expect(self.signup.signup_form_error_text).to_have_text(Data.email_exists_text)
+
+        take_screenshot(self.page, "signup_error_text")
