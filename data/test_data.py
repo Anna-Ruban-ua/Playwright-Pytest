@@ -14,6 +14,8 @@ class Data:
     contact_us_verification_text = "Get In Touch"
     contact_us_success_text = "Success! Your details have been submitted successfully."
     products_container_text = "All Products"
+    search_header_text = "Searched Products"
+
 
     available_countries = [
         "India",

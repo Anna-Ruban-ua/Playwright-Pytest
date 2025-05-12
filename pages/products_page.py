@@ -14,6 +14,9 @@ class Products:
         self.__product_availability = self.__details_container.locator('p', has_text="Availability")
         self.__product_condition = self.__details_container.locator('p', has_text="Condition")
         self.__product_brand = self.__details_container.locator('p', has_text="Brand")
+        self.__search_input = self.page.locator('input[id="search_product"]')
+        self.__search_btn = self.page.locator('button[id="submit_search"]')
+        self.__search_result_titles = self.page.locator('.productinfo.text-center p')
 
     @property
     def container(self):
@@ -51,6 +54,10 @@ class Products:
     def product_brand(self):
         return self.__product_brand
 
+    @property
+    def search_result_titles(self):
+        return self.__search_result_titles
+
     def click_on_first_product_button(self):
         self.__view_first_product_button.click()
 
@@ -66,3 +73,10 @@ class Products:
             f"Condition: {clean(self.__product_condition.inner_text())}\n"
             f"Brand: {clean(self.__product_brand.inner_text())}"
         )
+
+    def get_all_product_names(self) -> list:
+        return self.page.locator('.productinfo.text-center p').all_inner_texts()
+
+    def search_product(self, name: str):
+        self.__search_input.fill(name)
+        self.__search_btn.click()
