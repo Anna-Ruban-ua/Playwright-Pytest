@@ -1,5 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","4439","Register user","tests","Mon May 12 07:58:46 GMT 2025","passed","Mon May 12 07:58:50 GMT 2025","TestRegisterUser","test_register_user","",""
-"","4159","Login User with correct email and password","tests","Mon May 12 07:58:48 GMT 2025","passed","Mon May 12 07:58:52 GMT 2025","TestLoginUser","test_login_user","",""
-"","3093","Logout User","tests","Mon May 12 07:58:47 GMT 2025","passed","Mon May 12 07:58:51 GMT 2025","TestLoginUser","test_login_user","",""
-"","1303","Login User with incorrect email and password","tests","Mon May 12 07:58:45 GMT 2025","passed","Mon May 12 07:58:46 GMT 2025","TestLoginUser","test_login_user","",""
