@@ -14,8 +14,8 @@ class ContactUs:
         self.__text_area_input = self.__contact_us_container.locator('textarea')
         self.__upload_file_button = self.__contact_us_container.locator('input[type="file"]')
         self.__submit_button = self.__contact_us_container.locator('input[type="submit"]')
-        self.__success_text = self.page.locator('div[class="status alert alert-success"]')
-        self.__home_btn = self.page.locator('.contact-form a[href="/"]')
+        self.__success_text = self.__contact_us_container.locator('div[class="status alert alert-success"]')
+        self.__home_btn = self.__contact_us_container.locator('a[href="/"]')
 
     @property
     def verif_text(self):
@@ -32,6 +32,7 @@ class ContactUs:
         self.__text_area_input.fill(message)
 
     def click_submit_button_and_accept_alert(self):
+        self.__submit_button.scroll_into_view_if_needed()
         self.page.once("dialog", lambda dialog: dialog.accept())
         self.__submit_button.click()
 
