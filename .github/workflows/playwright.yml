@@ -44,6 +44,7 @@ jobs:
           path: gh-pages
 
       - name: Generate Allure Report
+        if: always()
         uses: simple-elf/allure-report-action@master
         with:
           allure_results: allure-results

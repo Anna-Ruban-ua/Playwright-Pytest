@@ -53,4 +53,5 @@ class TestContactUs:
 
         with allure.step("Click 'Home' button and verify homepage is visible"):
             self.contact.click_home_btn()
+            expect(self.home.items_container).to_be_attached()
             expect(self.home.items_container).to_be_visible()
