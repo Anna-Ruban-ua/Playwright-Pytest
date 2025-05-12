@@ -5,7 +5,7 @@ class Header:
         self.page = page
 
         self.__home_btn = self.page.locator('.container ul a[href="/"]')
-        self.__products_btn = self.page.locator('a[href="/products/"]')
+        self.__products_btn = self.page.locator('a[href="/products"]')
         self.__cart_btn = self.page.locator('a[href="/view_cart"]')
         self.__signup_login_btn = self.page.locator('a[href="/login"]')
         self.__test_cases_btn = self.page.locator('.container ul a[href="/test_cases"]')
